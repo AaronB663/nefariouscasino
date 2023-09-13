@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Casino Galaxy</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Styles from the styles.css will go here */
+    </style>
 </head>
 <body>
     <header>
@@ -21,122 +23,61 @@
     <main>
         <section id="home">
             <h2>Welcome to Casino Galaxy</h2>
-            <p>The ultimate space-themed casino experience.</p>
+            <p>The ultimate space-themed casino experience. Dive into the stars and win big!</p>
         </section>
-        <section id="slots">
+        <section id="slots" class="game-section">
             <h2>Galaxy Slots</h2>
             <div id="slot-machine">
                 <div class="reel" id="reel1"><img src="earth.png" alt="Earth"></div>
                 <div class="reel" id="reel2"><img src="moon.png" alt="Moon"></div>
                 <div class="reel" id="reel3"><img src="star.png" alt="Star"></div>
-                <button id="spin-button">Spin</button>
             </div>
+            <button id="spin-button">Spin</button>
+            <div id="result"></div>
         </section>
-        <!-- Additional sections like Blackjack, Poker etc. can be added similarly -->
     </main>
     <footer>
         <p>&copy; 2023 Casino Galaxy</p>
+        <div>Follow us on: <a href="#">Facebook</a>, <a href="#">Twitter</a></div>
     </footer>
+    <script>
+        const reel1 = document.getElementById('reel1');
+const reel2 = document.getElementById('reel2');
+const reel3 = document.getElementById('reel3');
+const spinButton = document.getElementById('spin-button');
+const result = document.getElementById('result');
 
-    <script src="script.js"></script>
+const symbols = [
+    {name: 'earth', img: 'earth.png'},
+    {name: 'moon', img: 'moon.png'},
+    {name: 'star', img: 'star.png'}
+];
+
+spinButton.addEventListener('click', function() {
+    const randomSymbol1 = getRandomSymbol();
+    const randomSymbol2 = getRandomSymbol();
+    const randomSymbol3 = getRandomSymbol();
+
+    setReelImage(reel1, randomSymbol1);
+    setReelImage(reel2, randomSymbol2);
+    setReelImage(reel3, randomSymbol3);
+
+    if (randomSymbol1.name === randomSymbol2.name && randomSymbol1.name === randomSymbol3.name) {
+        result.textContent = `You won with 3 ${randomSymbol1.name} symbols!`;
+    } else {
+        result.textContent = 'Try again!';
+    }
+});
+
+function getRandomSymbol() {
+    return symbols[Math.floor(Math.random() * symbols.length)];
+}
+
+function setReelImage(reel, symbol) {
+    reel.querySelector('img').src = symbol.img;
+    reel.querySelector('img').alt = symbol.name;
+}
+
+    </script>
 </body>
 </html>
-
-body {
-    font-family: Arial, sans-serif;
-    background: url('galaxy-bg.jpg') center center fixed;
-    background-size: cover;
-    margin: 0;
-    padding: 0;
-    color: white;
-}
-
-header, nav, main, footer {
-    padding: 20px;
-}
-
-header {
-    background-color: rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 15px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: white;
-}
-
-#slot-machine {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-    justify-items: center;
-    align-items: center;
-}
-
-.reel img {
-    width: 100px;
-    height: 100px;
-    border: 3px solid white;
-    border-radius: 10px;
-}
-
-#spin-button {
-    grid-column: span 3;
-    padding: 10px 20px;
-    background-color: gold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-}
-
-footer {
-    background-color: rgba(0, 0, 0, 0.6);
-    text-align: center;
-    padding: 10px 0;
-}
-
-{\rtf1\ansi\ansicpg1252\cocoartf2709
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\margl1440\margr1440\vieww28600\viewh15100\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-
-\f0\fs24 \cf0 const reel1 = document.getElementById('reel1');\
-const reel2 = document.getElementById('reel2');\
-const reel3 = document.getElementById('reel3');\
-const spinButton = document.getElementById('spin-button');\
-\
-const symbols = [\
-    \{name: 'earth', img: 'earth.png'\},\
-    \{name: 'moon', img: 'moon.png'\},\
-    \{name: 'star', img: 'star.png'\},\
-    // Add more symbols as necessary\
-];\
-\
-spinButton.addEventListener('click', function() \{\
-    let randomSymbol1 = symbols[Math.floor(Math.random() * symbols.length)];\
-    let randomSymbol2 = symbols[Math.floor(Math.random() * symbols.length)];\
-    let randomSymbol3 = symbols[Math.floor(Math.random() * symbols.length)];\
-\
-    reel1.querySelector('img').src = randomSymbol1.img;\
-    reel1.querySelector('img').alt = randomSymbol1.name;\
-    reel2.querySelector('img').src = randomSymbol2.img;\
-    reel2.querySelector('img').alt = randomSymbol2.name;\
-    reel3.querySelector('img').src = randomSymbol3.img;\
-    reel3.querySelector('img').alt = randomSymbol3.name;\
-\});\
-}
