@@ -1,146 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Casino Galaxy</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <nav id="navbar">
+    <header>
         <h1>Casino Galaxy</h1>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#games">Games</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-    <section id="home" class="full-height">
-        <h2>Welcome to Casino Galaxy</h2>
-    </section>
-
-    <section id="games" class="full-height">
-        <h2>Games</h2>
-        <div class="card" id="slots-card">
-            <h3>Slots</h3>
-            <button class="modal-button" id="slots-button">Learn More</button>
-        </div>
-        <!-- More cards go here -->
-    </section>
-
-    <div class="modal" id="slots-modal">
-        <div class="modal-content">
-            <span class="close-button" id="slots-close">&times;</span>
-            <h3>Slots</h3>
-            <p>Information about slots...</p>
-        </div>
-    </div>
-    <!-- More modals go here -->
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#slots">Slots</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h2>Welcome to Casino Galaxy</h2>
+            <p>The ultimate space-themed casino experience.</p>
+        </section>
+        <section id="slots">
+            <h2>Galaxy Slots</h2>
+            <div id="slot-machine">
+                <div class="reel" id="reel1"><img src="earth.png" alt="Earth"></div>
+                <div class="reel" id="reel2"><img src="moon.png" alt="Moon"></div>
+                <div class="reel" id="reel3"><img src="star.png" alt="Star"></div>
+                <button id="spin-button">Spin</button>
+            </div>
+        </section>
+        <!-- Additional sections like Blackjack, Poker etc. can be added similarly -->
+    </main>
+    <footer>
+        <p>&copy; 2023 Casino Galaxy</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
-
 </html>
-body {
-    font-family: Arial, sans-serif;
-    background: url('https://images.unsplash.com/photo-1564054984964-44c0038c0ef2') center center fixed;
-    background-size: cover;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-}
-
-#navbar {
-    background-color: rgba(0, 0, 0, 0.8);
-    overflow: hidden;
-    color: white;
-}
-
-#navbar a {
-    float: left;
-    display: block;
-    text-align: center;
-    padding: 14px;
-    text-decoration: none;
-}
-
-.full-height {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.card {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    text-align: center;
-    border-radius: 10px;
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-.modal-content {
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 50%;
-    background-color: white;
-}
-
-.close-button {
-    color: black;
-    float: right;
-    font-size: 28px;
-}
-
-.close-button:hover, .close-button:focus {
-    color: red;
-    cursor: pointer;
-}
-
-/* Media Query */
-@media screen and (max-width: 600px) {
-    .modal-content {
-        width: 80%;
-    }
-}
-// Modal Logic
-let modal = document.getElementById("slots-modal");
-let btn = document.getElementById("slots-button");
-let span = document.getElementById("slots-close");
-
-btn.onclick = function() {
-    modal.style.display = "block";
-}
-
-span.onclick = function() {
-    modal.style.display = "none";
-}
-
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-
-// Smooth Scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
