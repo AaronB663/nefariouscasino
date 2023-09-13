@@ -1,0 +1,32 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww28600\viewh15100\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 const reel1 = document.getElementById('reel1');\
+const reel2 = document.getElementById('reel2');\
+const reel3 = document.getElementById('reel3');\
+const spinButton = document.getElementById('spin-button');\
+\
+const symbols = [\
+    \{name: 'earth', img: 'earth.png'\},\
+    \{name: 'moon', img: 'moon.png'\},\
+    \{name: 'star', img: 'star.png'\},\
+    // Add more symbols as necessary\
+];\
+\
+spinButton.addEventListener('click', function() \{\
+    let randomSymbol1 = symbols[Math.floor(Math.random() * symbols.length)];\
+    let randomSymbol2 = symbols[Math.floor(Math.random() * symbols.length)];\
+    let randomSymbol3 = symbols[Math.floor(Math.random() * symbols.length)];\
+\
+    reel1.querySelector('img').src = randomSymbol1.img;\
+    reel1.querySelector('img').alt = randomSymbol1.name;\
+    reel2.querySelector('img').src = randomSymbol2.img;\
+    reel2.querySelector('img').alt = randomSymbol2.name;\
+    reel3.querySelector('img').src = randomSymbol3.img;\
+    reel3.querySelector('img').alt = randomSymbol3.name;\
+\});\
+}
