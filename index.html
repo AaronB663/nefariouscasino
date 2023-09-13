@@ -1,105 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Casino Galaxy</title>
     <style>
         body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: url('galaxy-bg.jpg') no-repeat center center fixed;
-    background-size: cover;
-    margin: 0;
-    padding: 0;
-    color: white;
-}
+            font-family: Arial, sans-serif;
+            background-image: url('backgroundForMyWebsite.jpg');
+            background-size: cover;
+            color: white;
+            text-align: center;
+        }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 10px 50px;
-}
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+        }
 
-nav ul {
-    display: flex;
-    list-style-type: none;
-    padding: 0;
-}
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
 
-nav ul li {
-    margin: 0 15px;
-    transition: transform 0.3s;
-}
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
 
-nav ul li:hover {
-    transform: scale(1.1);
-}
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+        }
 
-nav ul li a {
-    text-decoration: none;
-    color: white;
-}
+        .game-section {
+            padding: 50px 0;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
 
-.game-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 50px 0;
-}
+        #slot-machine {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
 
-#slot-machine {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-    justify-items: center;
-    align-items: center;
-    margin-bottom: 20px;
-}
+        .reel {
+            width: 100px;
+            height: 100px;
+            margin: 0 10px;
+            border: 3px solid white;
+            box-sizing: border-box;
+        }
 
-.reel img {
-    width: 100px;
-    height: 100px;
-    border: 3px solid white;
-    border-radius: 50%;
-    transition: transform 0.3s;
-}
+        .reel img {
+            max-width: 100%;
+            max-height: 100%;
+        }
 
-.reel:hover img {
-    transform: scale(1.1);
-}
+        #spin-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+        }
 
-#spin-button {
-    padding: 10px 20px;
-    background-color: gold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-#spin-button:hover {
-    background-color: #b8860b;
-}
-
-footer {
-    background-color: rgba(0, 0, 0, 0.7);
-    text-align: center;
-    padding: 20px 0;
-}
-
-footer a {
-    color: cyan;
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
-
+        footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px 0;
+            margin-top: 50px;
+        }
     </style>
 </head>
+
 <body>
     <header>
         <h1>Casino Galaxy</h1>
@@ -120,9 +98,9 @@ footer a:hover {
         <section id="slots" class="game-section">
             <h2>Galaxy Slots</h2>
             <div id="slot-machine">
-                <div class="reel" id="reel1"><img src="earth.png" alt="Earth"></div>
-                <div class="reel" id="reel2"><img src="moon.png" alt="Moon"></div>
-                <div class="reel" id="reel3"><img src="star.png" alt="Star"></div>
+                <div class="reel" id="reel1"><img src="myEarthImage.jpg" alt="Earth"></div>
+                <div class="reel" id="reel2"><img src="myMoonImage.jpg" alt="Moon"></div>
+                <div class="reel" id="reel3"><img src="coolStar.png" alt="Star"></div>
             </div>
             <button id="spin-button">Spin</button>
             <div id="result"></div>
@@ -133,43 +111,19 @@ footer a:hover {
         <div>Follow us on: <a href="#">Facebook</a>, <a href="#">Twitter</a></div>
     </footer>
     <script>
-        const reel1 = document.getElementById('reel1');
-const reel2 = document.getElementById('reel2');
-const reel3 = document.getElementById('reel3');
-const spinButton = document.getElementById('spin-button');
-const result = document.getElementById('result');
+        // This script will simulate the slot machine spin
+        document.getElementById('spin-button').addEventListener('click', function() {
+            let images = ["myEarthImage.jpg", "myMoonImage.jpg", "coolStar.png"];
+            let reels = document.querySelectorAll('.reel img');
 
-const symbols = [
-    {name: 'earth', img: 'earth.png'},
-    {name: 'moon', img: 'moon.png'},
-    {name: 'star', img: 'star.png'}
-];
+            reels.forEach(reel => {
+                let randomImage = images[Math.floor(Math.random() * images.length)];
+                reel.src = randomImage;
+            });
 
-spinButton.addEventListener('click', function() {
-    const randomSymbol1 = getRandomSymbol();
-    const randomSymbol2 = getRandomSymbol();
-    const randomSymbol3 = getRandomSymbol();
-
-    setReelImage(reel1, randomSymbol1);
-    setReelImage(reel2, randomSymbol2);
-    setReelImage(reel3, randomSymbol3);
-
-    if (randomSymbol1.name === randomSymbol2.name && randomSymbol1.name === randomSymbol3.name) {
-        result.textContent = `You won with 3 ${randomSymbol1.name} symbols!`;
-    } else {
-        result.textContent = 'Try again!';
-    }
-});
-
-function getRandomSymbol() {
-    return symbols[Math.floor(Math.random() * symbols.length)];
-}
-
-function setReelImage(reel, symbol) {
-    reel.querySelector('img').src = symbol.img;
-    reel.querySelector('img').alt = symbol.name;
-}
-
+            document.getElementById('result').textContent = "Spun!";
+        });
     </script>
 </body>
+
 </html>
