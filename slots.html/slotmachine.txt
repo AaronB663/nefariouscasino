@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxy Slots - Casino Galaxy</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Assuming you have a styles.css file for styling -->
+    <style>
+        /* Add any page-specific CSS here */
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Casino Galaxy</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="slots.html">Slots</a></li>
+                <!-- Add other navigation links as needed -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="slots">
+            <h2>Galaxy Slots</h2>
+            <div id="slot-machine">
+                <div class="reel" id="reel1"><img src="myEarthImage.jpg" alt="Earth"></div>
+                <div class="reel" id="reel2"><img src="myMoonImage.jpg" alt="Moon"></div>
+                <div class="reel" id="reel3"><img src="coolStar.png" alt="Star"></div>
+            </div>
+            <button id="spin-button">Spin</button>
+            <div id="result"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Casino Galaxy</p>
+        <div>Follow us on: <a href="#">Facebook</a>, <a href="#">Twitter</a></div>
+    </footer>
+
+    <script>
+        // Add your slot machine's JavaScript here or link to an external .js file
+    </script>
+</body>
+
+</html>
